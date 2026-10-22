@@ -1,0 +1,8 @@
+{
+  "version": "https://jsonfeed.org/version/1.1",
+  "title": "FB360 Panorama Upstream",
+  "home_page_url": "https://raw.githubusercontent.com/TikerBin/fb360-upstream/main/",
+  "feed_url": "https://raw.githubusercontent.com/TikerBin/fb360-upstream/main/feed.json",
+  "description": "Free-license 360° equirectangular landscape panoramas, Facebook-360 ready (6000×3000, GPano).",
+  "items": []
+}
