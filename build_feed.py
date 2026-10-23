@@ -53,12 +53,12 @@ def build_rss(items):
            "<channel>",
            "<title>FB360 Panorama Upstream</title>",
            f"<link>{RAW_BASE}</link>",
-           "<description>Free-license 360° equirectangular landscape panoramas, Facebook-360 ready (6000×3000, GPano). Captions EN/FR/ZH, per-item license + attribution.</description>",
+           "<description>Free-license 360° equirectangular landscape panoramas, Facebook-360 ready (6000×3000, GPano). Captions in English, per-item license + attribution.</description>",
            "<language>en</language>",
            f"<lastBuildDate>{now_rfc}</lastBuildDate>"]
     for it in items:
         pub_rfc = format_datetime(it["_pub_dt"])
-        full = (f"{it['caption_en']}\n\n— FR —\n{it['caption_fr']}\n\n— 中文 —\n{it['caption_zh']}\n\n"
+        full = (f"{it['caption_en']}\n\n"
                 f"Author: {it['author']} · License: {it['license']} ({it['license_url']}) · "
                 f"Location: {it['location']}, {it['country']} · Theme: {it['theme']} · "
                 f"Original: {it['original_width']}×{it['original_height']} · Shoot date: {it.get('shoot_date','')}")
@@ -68,7 +68,7 @@ def build_rss(items):
                 f'<guid isPermaLink="false">{escape(it["id"])}</guid>',
                 f"<pubDate>{pub_rfc}</pubDate>",
                 f"<category>{escape(it['theme'])}</category>",
-                f"<description>{escape(it['caption_zh'])}</description>",
+                f"<description>{escape(it['caption_en'])}</description>",
                 f"<content:encoded><![CDATA[{full}]]></content:encoded>",
                 f'<enclosure url="{escape(it["_download_url"])}" length="{it["_size"]}" type="image/jpeg"/>',
                 "</item>"]
@@ -91,7 +91,7 @@ def build_json(items):
             "url": it["source_url"],
             "title": it["title"],
             "content_text": it["caption_en"],
-            "summary": it["caption_zh"],
+            "summary": it["caption_en"],
             "date_published": it["_pub_dt"].isoformat(),
             "tags": [it["theme"]],
             "attachments": [{"url": it["_download_url"], "mime_type": "image/jpeg", "size_in_bytes": it["_size"]}],
@@ -99,7 +99,6 @@ def build_json(items):
             "_source_url": it["source_url"], "_original_download_url": it["original_download_url"],
             "_original_width": it.get("original_width"), "_original_height": it.get("original_height"),
             "_location": it["location"], "_country": it["country"], "_shoot_date": it.get("shoot_date", ""),
-            "_caption_fr": it["caption_fr"], "_caption_zh": it["caption_zh"],
             "_spec": "6000x3000 equirectangular JPEG, GPano XMP + RICOH THETA S EXIF",
             "_sha256": it["_sha256"],
         })

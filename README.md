@@ -17,7 +17,7 @@ published as an RSS/JSON feed for incremental polling.
   `license_url`; `source_url` (original file page, permanent); `download_url`
   (RSS enclosure / JSON attachment — the finished JPG under `media/`, image/jpeg,
   with byte size; JSON also carries `_sha256`); `original_download_url` + original
-  dimensions; `shoot_date` (only when verifiable); captions in EN (primary), FR, ZH.
+  dimensions; `shoot_date` (only when verifiable); caption in English (feed outputs are English-only; the source items.json retains EN/FR/ZH).
 - Finished file spec: 6000×3000 equirectangular JPEG (strict 2:1) with GPano XMP
   (ProjectionType=equirectangular, UsePanoramaViewer=True) + EXIF Make RICOH /
   Model RICOH THETA S — upload to Facebook as a normal photo and it is recognized
